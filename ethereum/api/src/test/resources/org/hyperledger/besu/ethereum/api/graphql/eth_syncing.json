@@ -1,0 +1,15 @@
+{
+  "request":     
+    "{ syncing {startingBlock currentBlock highestBlock } }",
+
+  "response": {
+    "data" : {
+      "syncing" : {
+        "startingBlock" : 1,
+        "currentBlock" : 2,
+        "highestBlock" : 3
+      }
+    }
+  },
+  "statusCode": 200
+}
