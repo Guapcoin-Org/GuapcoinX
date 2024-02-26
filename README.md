@@ -17,6 +17,4 @@ GuapcoinX
 <tr><td>Explorer URL</td><td>https://explorer.guapcoinx.com/</td></tr>
 </table>
 
-### Required GuapcoinX for Create Validator : 25,000 GUAPX
-### For Create GuapcoinX Validator [Click here.](https://validator.guapcoinx.com/)
 ### For Swap your Guapcoin into GuapcoinX [Click here.](https://bridge.guapcoinx.com/)
