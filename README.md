@@ -1,8 +1,10 @@
 # GuapcoinX Blockchain
 
-![GuapcoinX Logo](https://guapcoinx.com/logo.png)
+<p align="center">
+  <img src="assets/logo.png" alt="GuapcoinX Logo" width="200">
+</p>
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Discord](https://img.shields.io/discord/YOUR_DISCORD_ID)](https://discord.gg/guapcoinx)
 
 ## Overview
 
