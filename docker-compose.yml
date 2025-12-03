@@ -1,0 +1,113 @@
+version: '3.8'
+
+services:
+  guapcoinx-node:
+    image: hyperledger/besu:25.10.0
+    container_name: guapcoinx-node
+    restart: unless-stopped
+    ports:
+      - "8545:8545"   # JSON-RPC HTTP
+      - "8546:8546"   # JSON-RPC WebSocket
+      - "8547:8547"   # GraphQL
+      - "30303:30303" # P2P TCP
+      - "30303:30303/udp" # P2P UDP
+    volumes:
+      - ./data:/var/lib/besu
+      - ./config/genesis.json:/var/lib/besu/genesis.json:ro
+      - ./config/static-nodes.json:/var/lib/besu/static-nodes.json:ro
+      - ./logs:/var/log/besu
+    environment:
+      - BESU_NETWORK_ID=71111
+      - BESU_GENESIS_FILE=/var/lib/besu/genesis.json
+      - BESU_STATIC_NODES_FILE=/var/lib/besu/static-nodes.json
+      - BESU_DATA_PATH=/var/lib/besu
+      - BESU_RPC_HTTP_ENABLED=true
+      - BESU_RPC_HTTP_HOST=0.0.0.0
+      - BESU_RPC_HTTP_PORT=8545
+      - BESU_RPC_HTTP_CORS_ORIGINS=*
+      - BESU_RPC_HTTP_API=ETH,NET,WEB3,DEBUG,TXPOOL
+      - BESU_RPC_WS_ENABLED=true
+      - BESU_RPC_WS_HOST=0.0.0.0
+      - BESU_RPC_WS_PORT=8546
+      - BESU_RPC_WS_API=ETH,NET,WEB3,DEBUG,TXPOOL
+      - BESU_GRAPHQL_HTTP_ENABLED=true
+      - BESU_GRAPHQL_HTTP_HOST=0.0.0.0
+      - BESU_GRAPHQL_HTTP_PORT=8547
+      - BESU_GRAPHQL_HTTP_CORS_ORIGINS=*
+      - BESU_HOST_ALLOWLIST=*
+      - BESU_LOGGING=INFO
+      - BESU_MIN_GAS_PRICE=1000000000  # 1 Gwei
+      - BESU_TX_POOL_MAX_SIZE=5000
+      - BESU_TX_POOL_RETENTION_HOURS=12
+      - BESU_SYNC_MODE=FAST
+      - BESU_MAX_PEERS=50
+    command:
+      - --nat-method=DOCKER
+    networks:
+      - guapcoinx
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8545"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Validator node configuration (requires validator key)
+  guapcoinx-validator:
+    image: hyperledger/besu:25.10.0
+    container_name: guapcoinx-validator
+    restart: unless-stopped
+    ports:
+      - "8645:8545"   # JSON-RPC HTTP (different port)
+      - "8646:8546"   # JSON-RPC WebSocket (different port)
+      - "30403:30303" # P2P TCP (different port)
+      - "30403:30303/udp" # P2P UDP (different port)
+    volumes:
+      - ./validator-data:/var/lib/besu
+      - ./config/genesis.json:/var/lib/besu/genesis.json:ro
+      - ./config/static-nodes.json:/var/lib/besu/static-nodes.json:ro
+      - ./validator-keys:/var/lib/besu/keys:ro  # Mount validator keys here
+      - ./logs:/var/log/besu
+    environment:
+      - BESU_NETWORK_ID=71111
+      - BESU_GENESIS_FILE=/var/lib/besu/genesis.json
+      - BESU_STATIC_NODES_FILE=/var/lib/besu/static-nodes.json
+      - BESU_DATA_PATH=/var/lib/besu
+      - BESU_RPC_HTTP_ENABLED=true
+      - BESU_RPC_HTTP_HOST=0.0.0.0
+      - BESU_RPC_HTTP_PORT=8545
+      - BESU_RPC_HTTP_CORS_ORIGINS=*
+      - BESU_RPC_HTTP_API=ETH,NET,WEB3,DEBUG,TXPOOL,QBFT
+      - BESU_RPC_WS_ENABLED=true
+      - BESU_RPC_WS_HOST=0.0.0.0
+      - BESU_RPC_WS_PORT=8546
+      - BESU_HOST_ALLOWLIST=*
+      - BESU_LOGGING=INFO
+      - BESU_MIN_GAS_PRICE=1000000000  # 1 Gwei
+      - BESU_SYNC_MODE=FULL  # Validators should use FULL sync
+      - BESU_MAX_PEERS=100
+    command:
+      - --nat-method=DOCKER
+      - --node-private-key-file=/var/lib/besu/keys/nodekey  # Path to validator key
+    networks:
+      - guapcoinx
+    profiles:
+      - validator
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8545"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+networks:
+  guapcoinx:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  data:
+  validator-data:
+  logs:

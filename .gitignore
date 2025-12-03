@@ -1,0 +1,60 @@
+# Node data
+data/
+validator-data/
+logs/
+
+# Docker
+*.log
+.docker/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Build artifacts
+build/
+dist/
+out/
+
+# Sensitive files
+*.key
+*.pem
+*.p12
+*.pfx
+nodekey
+password.txt
+keystore/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+vendor/
+
+# Coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
