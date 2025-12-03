@@ -180,19 +180,27 @@ forge create --rpc-url guapcoinx \
 
 ## Network Architecture
 
-### Validators
-GuapcoinX runs on a network of 5 validators using QBFT consensus:
+### Validators (Permissioned)
+GuapcoinX uses a **permissioned validator set**. New validators must be voted in by existing validators.
+
+**Current Validators (5 nodes):**
 - Validator 1: 149.102.138.47
 - Validator 2: 149.102.138.50
 - Validator 3: 185.182.187.226
 - Validator 4: 38.242.136.249
 - Validator 5: 38.242.134.203
 
+**Want to become a validator?**
+Contact the GuapcoinX team via [Discord](https://discord.gg/guapcoinx) or [Telegram](https://t.me/guapcoinx) to discuss validator requirements and the voting process.
+
+> **Note:** Running `run-validator-node.sh` with an unauthorized key will not grant validator privileges. Your node will function as a full node but won't participate in block production.
+
 ### Consensus
 - **Algorithm**: QBFT (Quorum Byzantine Fault Tolerant)
 - **Block Time**: ~2 seconds
 - **Finality**: Immediate (no confirmations needed)
 - **Fault Tolerance**: Can withstand up to 1 faulty validator
+- **Validator Set**: Permissioned (requires voting to join)
 
 ## API Reference
 
