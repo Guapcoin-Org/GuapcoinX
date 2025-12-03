@@ -172,11 +172,11 @@ forge create --rpc-url guapcoinx \
 - **Decimals**: 18
 - **Use Case**: Gas fees only
 
-### GUAP Token
+### Guapcoin (GUAP)
 - **Contract**: `0x013A109A02FaEf81c4b8D3339D615861621CB65d`
+- **Symbol**: GUAP
 - **Type**: ERC-20
 - **Decimals**: 18
-- **Use Cases**: DEX fees, liquidity incentives, governance
 
 ## Network Architecture
 
