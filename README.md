@@ -28,7 +28,7 @@ GuapcoinX is a high-performance EVM-compatible blockchain built for speed, scala
   - https://rpc-mainnet-1.guapcoinx.com
   - https://rpc-mainnet-2.guapcoinx.com
 - **WebSocket**: wss://rpc-mainnet.guapcoinx.com/ws
-- **Explorer**: https://scan.guapcoinx.com
+- **Explorer**: https://explorer.guapcoinx.com
 
 ### Add to MetaMask
 
@@ -44,7 +44,7 @@ await window.ethereum.request({
       decimals: 18
     },
     rpcUrls: ['https://rpc-mainnet.guapcoinx.com'],
-    blockExplorerUrls: ['https://scan.guapcoinx.com']
+    blockExplorerUrls: ['https://explorer.guapcoinx.com']
   }]
 });
 ```
@@ -191,7 +191,7 @@ GuapcoinX uses a **permissioned validator set**. New validators must be voted in
 - Validator 5: 38.242.134.203
 
 **Want to become a validator?**
-Contact the GuapcoinX team via [Discord](https://discord.gg/guapcoinx) or [Telegram](https://t.me/guapcoinx) to discuss validator requirements and the voting process.
+Contact the GuapcoinX team via [guap.network](https://www.guap.network/) to discuss validator requirements and the voting process.
 
 > **Note:** Running `run-validator-node.sh` with an unauthorized key will not grant validator privileges. Your node will function as a full node but won't participate in block production.
 
@@ -216,12 +216,8 @@ Full API documentation: https://docs.guapcoinx.com/api
 
 ## Resources
 
-- 📚 [Documentation](https://docs.guapcoinx.com)
-- 🌐 [Website](https://guapcoinx.com)
-- 📊 [Block Explorer](https://scan.guapcoinx.com)
-- 💬 [Discord](https://discord.gg/guapcoinx)
-- 🐦 [Twitter](https://twitter.com/guapcoinx)
-- 📱 [Telegram](https://t.me/guapcoinx)
+- 🌐 [Website](https://www.guap.network/)
+- 📊 [Block Explorer](https://explorer.guapcoinx.com)
 
 ## Contributing
 
