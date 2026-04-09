@@ -1,0 +1,361 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 100%);
+    background-attachment: fixed;
+    color: #ffffff;
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Explorer-matched scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #FFD700, #FFED4E);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #FFED4E, #FFD700);
+    box-shadow: 0 0 8px rgba(255,215,0,0.4);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* Orbitron for brand display text */
+  .font-display {
+    font-family: "Orbitron", "Inter", sans-serif;
+  }
+}
+
+@layer components {
+
+  /* ── Glass cards — frosted explorer style ─────────────────── */
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: border-color 0.3s ease;
+  }
+
+  .glass:hover {
+    border-color: rgba(255, 215, 0, 0.4);
+  }
+
+  .glass-gold {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+  }
+
+  .glass-dark {
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+  }
+
+  /* ── Gold gradient text ────────────────────────────────────── */
+  .gold-text {
+    background: linear-gradient(135deg, #FFD700, #FFED4E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Buttons ───────────────────────────────────────────────── */
+  .btn-gold {
+    background: linear-gradient(135deg, #FFD700, #FFED4E);
+    color: #000000;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-gold:hover:not(:disabled) {
+    background: linear-gradient(135deg, #FFED4E, #FFD700);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .btn-gold:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  .btn-gold:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 215, 0, 0.05);
+    cursor: pointer;
+  }
+
+  .btn-outline:hover:not(:disabled) {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 16px rgba(255, 215, 0, 0.2);
+  }
+
+  .btn-outline:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .btn-ghost {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-ghost:hover:not(:disabled) {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* ── Input field — pill style from explorer ───────────────── */
+  .input-field {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    color: #ffffff;
+    border-radius: 50px;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .input-field::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* Rectangular variant for forms */
+  .input-field-rect {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  .input-field-rect:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  }
+
+  .input-field-rect::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* ── DID badge ─────────────────────────────────────────────── */
+  .did-badge {
+    background: rgba(255, 215, 0, 0.06);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 10px;
+    font-family: "Inter", monospace;
+    font-size: 0.75rem;
+    color: #FFD700;
+    padding: 0.5rem 0.875rem;
+    word-break: break-all;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── Step indicator ────────────────────────────────────────── */
+  .step-indicator {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .step-active {
+    background: linear-gradient(135deg, #FFD700, #FFED4E);
+    color: #000;
+    box-shadow: 0 0 16px rgba(255, 215, 0, 0.5);
+  }
+
+  .step-done {
+    background: rgba(255, 215, 0, 0.15);
+    border: 1px solid #FFD700;
+    color: #FFD700;
+  }
+
+  .step-pending {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  /* ── Code block ────────────────────────────────────────────── */
+  .code-block {
+    background: rgba(4, 8, 18, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .code-block pre {
+    padding: 1.25rem;
+    font-family: "Inter", monospace;
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: #86efac;
+    overflow-x: auto;
+  }
+
+  /* ── Credential badge ──────────────────────────────────────── */
+  .credential-badge {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 15px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #FFD700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── Nav link ──────────────────────────────────────────────── */
+  .nav-link {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-link:hover { color: #FFD700; }
+  .nav-link.active { color: #FFD700; }
+
+  /* ── Stat item — explorer card style ──────────────────────── */
+  .stat-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 10px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .stat-item:hover {
+    border-color: rgba(255, 215, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .stat-value {
+    color: #FFD700;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .stat-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ── Status badge ──────────────────────────────────────────── */
+  .status-badge {
+    border-radius: 15px;
+    padding: 0.25rem 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+
+  .status-active {
+    background: rgba(0, 255, 0, 0.15);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    color: #00ff00;
+  }
+
+  .status-pending {
+    background: rgba(255, 165, 0, 0.15);
+    border: 1px solid rgba(255, 165, 0, 0.3);
+    color: #ffa500;
+  }
+
+  .status-gold {
+    background: rgba(255, 215, 0, 0.15);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+  }
+
+  /* ── Gold accent divider line ──────────────────────────────── */
+  .gold-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #FFD700, transparent);
+    border: none;
+    margin: 0 auto;
+  }
+}
+
+@layer utilities {
+  .text-gold { color: #FFD700; }
+  .text-gold-light { color: #FFED4E; }
+  .border-gold { border-color: rgba(255,215,0,0.2); }
+  .border-gold-strong { border-color: rgba(255,215,0,0.4); }
+  .bg-dark { background-color: #0A0A0A; }
+  .bg-card { background: rgba(255,255,255,0.03); }
+  .glow-gold { box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+  .glow-gold-lg { box-shadow: 0 0 40px rgba(255,215,0,0.4); }
+  .tracking-brand { letter-spacing: 2px; }
+  .tracking-wide-custom { letter-spacing: 1px; }
+}
