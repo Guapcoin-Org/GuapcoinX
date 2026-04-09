@@ -33,11 +33,12 @@ Browser (React/Vite)
   └── /api/resolve → On-chain log query + IPFS fetch
 
 Smart Contracts (Guapcoin EVM)
-  ├── GuapDIDRegistry      — stores DID → IPFS CID mapping
-  ├── GuapGovernanceToken  — GVOTE ERC-20 for DAO voting
-  ├── GuapDAO              — proposal + voting governance
-  ├── GuapValidatorRegistry— community business validator management
-  └── GuapVerification     — privacy-preserving identity attestations
+  ├── GuapDIDRegistry         — stores DID → IPFS CID mapping
+  ├── GuapGovernanceToken     — GVOTE ERC-20 for DAO voting
+  ├── GuapDAO v2              — proposal + voting governance (ownerExecute for bootstrap)
+  ├── GuapValidatorRegistry v2— community business validator management
+  ├── GuapVerification v2     — privacy-preserving identity attestations
+  └── GVOTEClaim              — activity-based GVOTE reward distribution
 
 Deployment
   └── Cloudflare Pages (guapid.xyz)
@@ -53,9 +54,10 @@ All contracts are deployed on Guapcoin mainnet (chain ID 71111):
 |----------|---------|
 | GuapDIDRegistry | `0xb29a6cfa7f1789addbe2366e36eeb7cf1f2eb361` |
 | GuapGovernanceToken (GVOTE) | `0x87f72004791c5c49d7077757bdf80b2cb116e335` |
-| GuapDAO | `0x6239c8500746291d86d2ed17c6a1cdd13a5e8067` |
-| GuapValidatorRegistry | `0xf76429313007aa218ce5134fb9ec87173fd431de` |
-| GuapVerification | `0xea669b9ffdc71c891dd088d76e4f788efba28143` |
+| GuapDAO v2 | `0x0762f52cb8dcb96156a6a7096966c475fc607097` |
+| GuapValidatorRegistry v2 | `0xe7309fc50554d30c5c908c64bd9f87b834076ac1` |
+| GuapVerification v2 | `0x1907a70830febce17bccdb81a2df51882913f03d` |
+| GVOTEClaim | `0x0e0f0d14b16025099fdbd23e07b74fd12b02bf8f` |
 
 ---
 
@@ -72,6 +74,24 @@ Human Validators are real-world community businesses — shops, community center
 2. GVOTE holders vote on your proposal (7-day window, 1,000 GVOTE quorum)
 3. If approved, you can begin issuing attestations
 
+**Founding Validator:** Kowrii Corp (`0xbC066F5377bF2b95D3Ca7462FF590E3aE7505F6B`) — Neobank, accepts all ID types. [kowrii.com](https://www.kowrii.com)
+
+---
+
+## Earning GVOTE
+
+GVOTE is earned through participation — not purchased:
+
+| Action | Reward |
+|--------|--------|
+| Create a GuapID | 10 GVOTE |
+| Get verified by a Human Validator | 250 GVOTE |
+| Submit a proposal that reaches quorum | 50 GVOTE |
+| Have a proposal pass a vote | 150 GVOTE |
+| Become an approved Human Validator | 1,000 GVOTE |
+
+GVOTE ownership is held by the DAO — all new minting requires a passed governance proposal.
+
 ---
 
 ## Pages
@@ -86,6 +106,10 @@ Human Validators are real-world community businesses — shops, community center
 | `/validators` | Browse validators + vote on proposals |
 | `/validators/propose` | Submit a validator application |
 | `/docs` | Integration guide + API reference |
+| `/governance` | Governance landing page (also at governance.guapid.xyz) |
+| `/governance/proposals` | Live DAO proposals + voting |
+| `/governance/propose` | Create a governance proposal |
+| `/governance/docs` | Governance documentation (simple + technical modes) |
 
 ---
 
