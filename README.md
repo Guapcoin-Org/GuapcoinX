@@ -216,6 +216,24 @@ GuapcoinX supports the standard Ethereum JSON-RPC API:
 
 Full API documentation: https://docs.guapcoinx.com/api
 
+## Deployed Protocols & Ecosystem
+
+### HAP — Human Authorship Protocol
+> Verifiable on-chain proof of human creative contribution in AI-assisted works.
+
+| | |
+|---|---|
+| **Contract** | [`0xD9208cFe3273CC78D863B2B14E2a597eabB0EE48`](https://explorer.guapcoinx.com/address/0xD9208cFe3273CC78D863B2B14E2a597eabB0EE48) |
+| **TX Hash** | [`0x63a13f476...b05561`](https://explorer.guapcoinx.com/tx/0x63a13f476ad2581194e80673f9325d03e939120973d9a98f00eadb6e44b05561) |
+| **Deployer** | `0xbC066F5377bF2b95D3Ca7462FF590E3aE7505F6B` |
+| **Protocol Org** | [github.com/HAP-Protocol](https://github.com/HAP-Protocol) |
+| **Bridge Repo** | [HAP-Protocol/bridge-guapcoin](https://github.com/HAP-Protocol/bridge-guapcoin) |
+| **Website** | [haphuman.xyz](https://haphuman.xyz) |
+
+HAP anchors Human Contribution Scores (HCS) and authorship fingerprints on-chain, creating immutable, legally-relevant proof of creative authorship for AI-assisted works. GuapcoinX is the first blockchain supported by the HAP Bridge.
+
+---
+
 ## Resources
 
 - 🌐 [Website](https://www.guap.network/)
